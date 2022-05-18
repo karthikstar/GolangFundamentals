@@ -18,6 +18,37 @@ package main
 
 import "fmt"
 
+type secTag struct {
+	item   string
+	active bool // true/false
+}
+
+func activateTag(tag *secTag) {
+	tag.active = true
+}
+
+func deactivateTag(tag *secTag) {
+	tag.active = false
+}
+
+func checkout(array []secTag) {
+	for i := range array { //deactivate all the tags
+		array[i].active = false
+	}
+}
+
 func main() {
+	tags := []secTag{
+		{"pen", true},
+		{"pencil", true},
+		{"phone", true},
+		{"laptop", true},
+	}
+	fmt.Println("initial", tags)
+
+	deactivateTag(&tags[1])
+	fmt.Println("after deactivation of 2nd tag", tags)
+	checkout(tags)
+	fmt.Println("aft deactivating all", tags)
 
 }
