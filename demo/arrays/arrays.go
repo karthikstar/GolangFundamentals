@@ -8,7 +8,7 @@ type Room struct {
 }
 
 func checkCleanliness(rooms [4]Room) {
-	//array of 4 elemenets passed in
+	//array of 4 elements passed in
 	for i := 0; i < len(rooms); i++ {
 		room := rooms[i]
 		if room.cleaned {

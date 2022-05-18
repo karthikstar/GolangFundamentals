@@ -22,6 +22,7 @@ package main
 
 import "fmt"
 
+// server statuses
 const (
 	Online      = 0
 	Offline     = 1
@@ -29,6 +30,49 @@ const (
 	Retired     = 3
 )
 
+func printServerStatus(m map[string]int) {
+	serverCount := 0
+	OnCount, OffCount, MCount, RCount := 0, 0, 0, 0
+	for _, status := range m {
+		serverCount += 1
+		switch status {
+		case Online:
+			OnCount += 1
+		case Offline:
+			OffCount += 1
+		case Maintenance:
+			MCount += 1
+		case Retired:
+			RCount += 1
+		default:
+			panic("unhandled server status")
+		}
+	}
+	fmt.Println("Total no of servers", serverCount)
+	fmt.Println("Offline", OffCount)
+	fmt.Println("Online", OnCount)
+	fmt.Println("Maintenance", MCount)
+	fmt.Println("Retired", RCount)
+}
+
 func main() {
+	//servers
 	servers := []string{"darkstar", "aiur", "omicron", "w359", "baseline"}
+	serverMap := make(map[string]int) // key will be the server name, value will be the erver status
+	for i := 0; i < len(servers); i++ {
+		serverMap[servers[i]] = Online
+	}
+	//display server info
+	printServerStatus(serverMap)
+
+	// change darkstar server to retired
+	serverMap["darkstar"] = Retired
+	// make aiur server offline
+	serverMap["aiur"] = Offline
+	printServerStatus(serverMap)
+	for key := range serverMap {
+		serverMap[key] = Maintenance
+	}
+	printServerStatus(serverMap)
+
 }
