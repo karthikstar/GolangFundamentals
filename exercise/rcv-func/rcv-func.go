@@ -23,7 +23,7 @@ type Player struct {
 }
 
 // receiver functions to modify player stats
-func (player *Player) modifyHealth(newHealth uint) {
+func (player *Player) modifyHealth(newHealth uint) { // modifyHealth() is a receiver fn. it is a fn which receives a player.
 	player.Health = newHealth
 }
 
@@ -35,7 +35,7 @@ func main() {
 	john := Player{20, 40, 30, 50, "John"}
 	fmt.Println("Initial:")
 	fmt.Println("Health:", john.Health, "Max Health:", john.MaxHealth, "Energy:", john.Energy, "Max Energy:", john.MaxEnergy)
-	john.modifyHealth(30)
+	john.modifyHealth(30) // john is of type player. as modifyHealth() function can receive a player, we can do john.modifyHealth()
 	fmt.Println("After updating health:")
 	fmt.Println("Health:", john.Health, "Max Health:", john.MaxHealth, "Energy:", john.Energy, "Max Energy:", john.MaxEnergy)
 	john.modifyEnergy(35)
