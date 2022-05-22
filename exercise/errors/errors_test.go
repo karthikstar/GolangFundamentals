@@ -24,3 +24,5 @@ func TestParseTime(t *testing.T) {
 		}
 	}
 }
+
+//run go test -v ./exercise/errors to run the tests
