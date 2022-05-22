@@ -78,6 +78,7 @@ func main() {
 	car := Car("Sporty")
 	truck := Truck("MountainCrusher")
 	motorcycle := Motorcycle("Croozer")
+	// fmt.Println(car) // gives Car: Sporty
 
 	sendToLift(car)
 	sendToLift(truck)
