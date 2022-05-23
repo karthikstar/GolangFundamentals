@@ -18,8 +18,47 @@
 
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
+)
+
+const (
+	CmdHello   = "hello"
+	CmdGoodbye = "bye"
+)
 
 func main() {
+	// create a scanner, use standard input
 
+	scanner := bufio.NewScanner(os.Stdin)
+	numLines := 0
+	numCommands := 0
+
+	//loop thru this
+	for scanner.Scan() {
+		//* Whenever the user types a "Q" or "q", the program should exit.
+		if strings.ToUpper(scanner.Text()) == "Q" {
+			break
+		} else {
+			text := strings.TrimSpace(scanner.Text())
+			//* When the user enters either "hello" or "bye", the program
+			//  should respond with a message after pressing the enter key.
+			switch text {
+			case CmdHello:
+				numCommands += 1
+				fmt.Println("command response: hi")
+			case CmdGoodbye:
+				numCommands += 1
+				fmt.Println("command response: bye")
+			}
+			if text != "" { // check if its not a empty line then plus 1
+				numLines += 1
+			}
+		}
+	}
+	fmt.Printf("You entered %v lines\n", numLines)
+	fmt.Printf("You entered %v commands\n", numCommands)
 }
