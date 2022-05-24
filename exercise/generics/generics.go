@@ -15,10 +15,20 @@
 
 package main
 
-import "fmt"
+import (
+	"constraints"
+	"fmt"
+)
 
 type Distance int32
 type Velocity float64
+
+//  - The function should work with floating point numbers, integers
+//    and arbitrary type aliases
+type Number interface {
+	constraints.Float | constraints.Integer
+	// number can either be a float or a integer
+}
 
 // The `clamp` function returns a value that has been "clamped"
 // within a specific range of numbers. The `min` value is the
@@ -28,9 +38,19 @@ type Velocity float64
 // Mathematically:
 //   min <= value <= max
 
-/*
-func clamp(value, min, max) clamped_value {}
-*/
+// clamp function will be generic over type T and type T must implement Number
+func clamp[T Number](value, min, max T) T {
+	// value, min, max are all type T, and fn must return type T
+	// we return a type T from this function
+
+	if value > max {
+		return max
+	} else if value < min {
+		return min
+	} else {
+		return value
+	}
+}
 
 func testClampInt8() {
 	var (
