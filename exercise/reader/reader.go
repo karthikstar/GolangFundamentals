@@ -25,6 +25,7 @@ import (
 	"strings"
 )
 
+// 2 commands - hello and goodbye
 const (
 	CmdHello   = "hello"
 	CmdGoodbye = "bye"
