@@ -85,3 +85,6 @@ func main() {
 	//	automate(&waste) // this not possible as
 	// we didnt implement BOTH interfaces
 }
+
+// we need both convey() and ship () implemented for toxicwaste to use it with
+// the automate fn

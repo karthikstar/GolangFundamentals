@@ -10,6 +10,7 @@ import (
 )
 
 func main() {
+	// create a new reader which reads from std input
 	r := bufio.NewReader(os.Stdin) // read from the standard input - inputting data on a terminal
 
 	sum := 0
@@ -29,11 +30,11 @@ func main() {
 		num, convErr := strconv.Atoi(n)
 		//if have conversion error
 		if convErr != nil {
-			fmt.Println(convErr)
+			fmt.Println(convErr) // print the err out
 		} else {
-			sum += num
+			sum += num // if no err, add the no that was converted, to the sum.
 		}
-
+		// check end of file
 		if inputErr == io.EOF {
 			// check if we ran out of data - then we can exit
 			// iof error doesnt mean its a error
