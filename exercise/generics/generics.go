@@ -42,7 +42,7 @@ type Number interface {
 func clamp[T Number](value, min, max T) T {
 	// value, min, max are all type T, and fn must return type T
 	// we return a type T from this function
-
+	///sadasds
 	if value > max {
 		return max
 	} else if value < min {
